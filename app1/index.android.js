@@ -23,4 +23,5 @@ const App = () => {
   );
 };
 
+//renderizar para o dispositivo
 AppRegistry.registerComponent('app1', () => App);
