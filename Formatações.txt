@@ -1,0 +1,69 @@
+//tamanho da fonte
+fontSize: 40,
+
+//alinhando o texto
+//auto/center/left/right
+textAlign: 'center',
+
+//colocar linha abaixo (underline), linha em cima do texto (line-through)
+textDecorationLine: 'underline',
+
+//cor do texto
+color: '#fff',
+
+//cor de fundo
+backgroundColor: '#9FE08B',
+
+//estilos de fonte ('italic')
+fontStyle: 'italic',
+
+fontWeight: '600', (valor de 100 a 900)
+
+//espaçamento interno
+//paddingTop/PaddingBotton/paddingRight/paddingLeft/paddingHorizontal/paddingVertical
+padding: 50,
+        
+//espaçamento externo
+//margin/marginTop/marginBotton/marginRight/marginLeft/marginHorizontal/marginVertical
+marginTop: 10,
+    
+//altura e largura
+height: 50,
+width: 150
+
+/*aplicando sombras no iOS
+shadowColor: '#000',
+shadowOffset: {widht: -10, height: 15},
+shadowOpacity: 0.5,
+shadowRadius: 10*/
+
+//aplicando sombras no Android
+elevation: 5
+
+//Justify Content - alinha o conteúdo na vertical
+//flex-end/flex-start/center/space-around/space-between
+justifyContent : 'center'
+
+//Align Items - alinha o conteúdo na horizontal
+//flex-end/flex-start/center/stretch
+alignItems : 'flex-start'
+
+//row/column
+flexDirection: 'row'
+
+//preenche todo o conteúdo
+flex: 1
+
+borderColor: '#1d8eb8',
+borderWidth: 3,
+borderRadius: 8
+
+<Button
+onPress={botaoPressionado}
+title="Gerar Frase"
+color="#841584"
+accessibilityLabel="Gerar Frase"
+/>
+
+usar imagem da internet
+{uri: 'http://www.jogalo.com/in/112813303cf.jpg'}

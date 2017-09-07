@@ -1,59 +1,57 @@
 //Imports
 import React from 'react';
-import { Text, View, Button, AppRegistry } from 'react-native';
+import { Text, View, AppRegistry, Image, TouchableOpacity, Alert } from 'react-native';
 
 //Formatações
 const Estilos = {
+  principal: {
+    backgroundColor: '#fff',
+    flex: 1, //1:1
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   estiloTexto: {
-    //tamanho da fonte
-    fontSize: 30,
-
-    //alinhando o texto
-    //auto/center/left/right
-    textAlign: 'center',
-
-    //colocar linha abaixo (underline), linha em cima do texto (line-through)
-    textDecorationLine: 'underline',
-
-    //cor do texto
     color: '#fff',
-    
-    //cor de fundo
-    backgroundColor: '#9FE08B',
-
-    //estilos de fonte ('italic')
-    //fontStyle: 'italic',
-    fontWeight: 'bold',
-    //fontWeight: '600', (valor de 100 a 900)
-    
-    //espaçamento interno
-    //paddingTop/PaddingBotton/paddingRight/paddingLeft/paddingHorizontal/paddingVertical
-    //padding: 50,
-        
-    //espaçamento externo
-    //margin/marginTop/marginBotton/marginRight/marginLeft/marginHorizontal/marginVertical
-    marginTop: 10,
-    
-    //altura e largura
-    //height: 50,
-    //width: 150
-
-    /*aplicando sombras no iOS
-    shadowColor: '#000',
-    shadowOffset: {widht: -10, height: 15},
-    shadowOpacity: 0.5,
-    shadowRadius: 10*/
-
-    //aplicando sombras no Android
-    elevation: 5
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  botao: {
+    backgroundColor: '#538530',
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    marginTop: 20,
+    borderColor: '#111',
+    borderWidth: 3,
+    borderRadius: 8
   }
 };
 
+const gerarNovaFrase = () => {
+  var numero_aleatorio = Math.random();
+  numero_aleatorio = Math.floor(numero_aleatorio * 6);
+
+  //frases
+  var frases = Array();
+  frases[0] = 'Estou sempre alegre. Essa é a melhor maneira';
+  frases[1] = 'O tempo dura bastante para aqueles que sabem aproveitá-lo.';
+  frases[2] = 'Se você encontrar um caminho sem obstáculos,';
+  frases[3] = 'Não existe um caminho para a felicidade. A felicidade é o caminho';
+  frases[4] = 'Blablabla whiskas sachê badumtss';
+  frases[5] = 'Você nunca sabe a força que tem. Até que a ';
+
+  Alert.alert(frases[numero_aleatorio]);
+}
+
 //Criar componentes
 const App = () => {
+  const { principal, botao, estiloTexto } = Estilos;
+
   return (
-    <View>
-      <Text style={Estilos.estiloTexto}>Frases do Dia</Text>
+    <View style={principal}>
+      <Image source={require('./imgs/logo.png')}/>
+      <TouchableOpacity style={botao} onPress={gerarNovaFrase}>
+        <Text style={estiloTexto}>Nova Frase</Text>
+      </TouchableOpacity>
     </View>
   );
 };
