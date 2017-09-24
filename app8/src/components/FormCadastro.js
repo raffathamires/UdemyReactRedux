@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Image, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Button, Image, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import {
     modificaEmail,
@@ -15,7 +15,22 @@ class formCadastro extends Component {
         const { nome, email, senha } = this.props;
         this.props.cadastraUsuario({ nome, email, senha });
     }
-    
+
+    renderBtnCadastro() {
+        if (this.props.loading_cadastro) {
+            return (
+                <ActivityIndicator size='large' />
+            );
+        }
+        return (
+            <Button
+                color='#115E54'
+                title='Cadastrar'
+                onPress={() => this._cadastraUsuario()}
+            />
+        );
+    }
+
     render() {
         return (
             <Image style={{ flex: 1, width: null }} source={bgImg}>
@@ -49,13 +64,10 @@ class formCadastro extends Component {
                             placeholder='Senha'
                             onChangeText={texto => this.props.modificaSenha(texto)}
                         />
+                        <Text style={{ color: '#ff0000', fontSize: 18 }}>{this.props.erroCadastro} </Text>
                     </View>
                     <View style={{ flex: 1 }}>
-                        <Button
-                        color='#115E54'
-                        title='Cadastrar'
-                        onPress={() => this._cadastraUsuario()}
-                        />
+                        {this.renderBtnCadastro()}
                     </View>
                 </View>
             </Image>
@@ -67,7 +79,9 @@ const mapStateToProps = state => (
     {
         nome: state.AutenticacaoReducer.nome,
         email: state.AutenticacaoReducer.email,
-        senha: state.AutenticacaoReducer.senha
+        senha: state.AutenticacaoReducer.senha,
+        erroCadastro: state.AutenticacaoReducer.erroCadastro,
+        loading_cadastro: state.AutenticacaoReducer.loading_cadastro
     }
 );
 
